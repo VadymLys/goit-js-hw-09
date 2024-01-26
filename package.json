@@ -6,11 +6,14 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build --base=/goit-js-hw-09/",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prepush": "git add .",
+    "push":"git commit -m 'update'",
+    "postpush":"git push"
   },
   "devDependencies": {
     "vite": "^4.0.5",
-    "glob": "^8.1.0'"
+    "glob": "^8.1.0"
   },
   "author": "Alexander Repeta <alexander.repeta@gmail.com>",
   "license": "ISC",
