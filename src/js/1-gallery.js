@@ -67,3 +67,27 @@
 
 import SimpleLightbox from 'simplelightbox';
 import  'simplelightbox/dist/simple-lightbox.min.css'
+
+const gallery = document.querySelector('.gallery');
+const markup = images.map(({ original, description, preview }) =>
+ `<li class = "gallery-item">
+ <a class = "gallery-link" href="${original}">
+ <img class = "gallery-image" src ="${preview}"
+ data-source="${original}"
+ alt="${description}" />
+</a>
+</li>`).join("");
+
+gallery.innerHTML = markup;
+
+const options = {
+  captions: true,
+  captionSelector: 'img',
+  captionType: 'attr',
+  captionsData: 'alt',
+  captionPosition: 'bottom',
+  animation: 250,
+};
+
+const lightbox = new SimpleLightbox('.gallery a', options);
+lightbox.on('show.simpleLightbox');

@@ -1,39 +1,35 @@
-// const form = document.querySelector('.feedback-form');
-// const localStorageKey = 'feedback-form-state';
 
-// // Checking for saved data in localStorage
-// const savedState = JSON.parse(localStorage.getItem(localStorageKey));
+const form = document.querySelector('.feedback-form');
+const localStorageKey = 'feedback-form-state';
 
-// if (savedState) {
-//   // Filling form fields with saved data
-//   form.elements.email.value = savedState.email || '';
-//   form.elements.message.value = savedState.message || '';
-// }
+const savedState = JSON.parse(localStorage.getItem(localStorageKey));
 
-// // Adding input event listener using event delegation
-// form.addEventListener('input', event => {
-//   const formData = {
-//     email: form.elements.email.value,
-//     message: form.elements.message.value,
-//   };
+if (savedState) {
+    
+    form.elements.email.value = savedState.email || "";
+    form.elements.message.value = savedState.message || "";
+}
 
-//   // Saving form data to localStorage
-//   localStorage.setItem(localStorageKey, JSON.stringify(formData));
-// });
+form.addEventListener('input', event => {
+    const formData = {
+        email: form.elements.email.value,
+        message: form.elements.message.value,
+    };
 
-// // Adding submit event listener
-// form.addEventListener('submit', event => {
-//   event.preventDefault();
+    localStorage.setItem(localStorageKey, JSON.stringify(formData));
+})
 
-//   // Getting and logging form data
-//   const formData = {
-//     email: form.elements.email.value,
-//     message: form.elements.message.value,
-//   };
+form.addEventListener('submit', event => {
+    event.preventDefault();
 
-//   console.log(formData);
+    const formData = {
+        email: form.elements.email.value,
+        message: form.elements.message.value,
+    }
 
-//   // Clearing localStorage and form fields
-//   localStorage.removeItem(localStorageKey);
-//   form.reset();
-// });
+    console.log(formData);
+
+    localStorage.removeItem(localStorageKey);
+    form.reset();
+})
+
