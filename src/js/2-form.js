@@ -6,8 +6,8 @@ const savedState = JSON.parse(localStorage.getItem(localStorageKey));
 
 if (savedState) {
     
-    form.elements.email.value = savedState.email || "";
-    form.elements.message.value = savedState.message || "";
+    form.elements.email.value = savedState.email.trim() || "";
+    form.elements.message.value = savedState.message.trim() || "";
 }
 
 form.addEventListener('input', () => {
@@ -22,8 +22,8 @@ form.addEventListener('input', () => {
 form.addEventListener('submit', event => {
     event.preventDefault();
 
-    if (form.elements.email.value === '' || form.elements.message.value === '') {
-        console.log('Please fill all fields in the form');
+    if (form.elements.email.value.trim() === '' || form.elements.message.value.trim() === '') {
+        alert("Please fill all fields in the form");
         return;
     }
   
